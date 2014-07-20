@@ -6,22 +6,20 @@
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Convert internal URL links into their titles (AddOn external links))]]></title>
-		<title lang="de"><![CDATA[Interne Links in Titel konvertieren (AddOn externe Links)]]></title>
+		<title lang="en"><![CDATA[Links in posts - convert external URL links into their titles]]></title>
+		<title lang="de"><![CDATA[Verlinkungen in Beiträgen - Externe Links in Titel konvertieren]]></title>
 		<description lang="en"><![CDATA[With this mod you are able to automatically convert external links into the given titles.
 
 When there is a title and it is NOT empty it uses this as replacement text for the full http url in your post.
 If it cannot read the file or the <title> tag is empty it returns the "regular" output the original code did before.
-Titles will be read once when you submit a post. The script does not check wether the URL still exists or not when it displays the message.]]></description>
-		<description lang="de"><![CDATA[Mit dieser Modifikation kannst Du externe Links in Beiträgen automatisch in deren Titel konvertiert werden.
+Titles will be read once when you submit a post. The script does not check whether the URL still exists or not when it displays the message.]]></description>
+		<description lang="de"><![CDATA[Mit diesem AddOn kann das Board externe Links in Beiträgen automatisch in deren Titel konvertieren, wenn deren URL in Beiträgen gepostet werden.
 
-Wenn die externe Seite einen Titel hat und dieser nicht leer ist, dann benutzt das Script diesen als Text-Ersetzung für die HTTP Url der dortigen Seite.
-Wenn kein Titel vorhanden ist, wird die reguläre Ersetzung durch das phpBB3 benutzt.
-Die Titel werden nur beim Posten ausgelesen. Das Script überprüft nicht noch einmal, ob die URL noch erreichbar und der Titel noch so vorhanden ist, wenn der Beitrag angezeigt wird.]]></description>
-		<author-notes lang="en"><![CDATA[allow_url_open() has to be enabled when wanting to convert external URLs into their titles.
-This addon can work as a stand alone mod.]]></author-notes>
-		<author-notes lang="de"><![CDATA[allow_url_open() muß aktiviert sein, um externe Seitentitel auslesen zu können.
-Dieses AddOn kann auch allein verwendet werden.]]></author-notes>
+Wenn die externe Seite einen Titel hat und dieser nicht leer ist, benutzt das Baord diesen Titel als Erstezung für die volle externe URL, die in einem Beitrag gepostet wurde.
+Falls die externe datei nicht gelesen werden kann oder kein <title> Tag vorhanden ist, wird das Standardverhalten des phpBB3 benutzt.
+Die Titel werden nur einmal in Zuge des Abschickens des Beitarges gelesen. Das Script überprüft nicht mehr, ob die URL noch erreichbar ist, wenn der Beitrag angezeigt wird.]]></description>
+		<author-notes lang="en"><![CDATA[allow_url_fopen() has to be enabled when wanting to convert external URLs into their titles.]]></author-notes>
+		<author-notes lang="de"><![CDATA[allow_url_fopen() muß auf ON stehen.]]></author-notes>
 		<author-group>
 			<author>
 				<realname><![CDATA[Miriam]]></realname>
@@ -36,10 +34,6 @@ Dieses AddOn kann auch allein verwendet werden.]]></author-notes>
 			<time>120</time>
 			<target-version>3.0.12</target-version>
 		</installation>
-		<link-group>
-			<link type="parent" href="./install_mod.xml" lang="en">Main Mod: Convert internal URL links into their titles</link>
-			<link type="parent" href="./install_mod.xml" lang="en">Haupt-Mod:Interne Links in Titel konvertieren</link>
-		</link-group>
 	</header>
 	<action-group>
 		<open src="includes/functions_content.php">
@@ -61,7 +55,6 @@ Dieses AddOn kann auch allein verwendet werden.]]></author-notes>
 					}
 				}
 				fclose($handle);
-				$text = html_entity_decode($text);
 			}]]></action>
 			</edit>
 		</open>

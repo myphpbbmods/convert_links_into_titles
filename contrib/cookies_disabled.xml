@@ -6,12 +6,10 @@
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Convert internal URL links into their titles (AddOn cookies disabled)]]></title>
-		<title lang="de"><![CDATA[Interne Links in Titel konvertieren (AddOn cookies disabled)]]></title>
-		<description lang="en"><![CDATA[This addon enables users having cookies disabled / non functional to follow internal links within posted text.]]></description>
+		<title lang="en"><![CDATA[Links in posts - cookies disabled]]></title>
+		<title lang="de"><![CDATA[Verlinkungen in Beiträgen - Cookies nicht erlaubt oder ohne Funktion]]></title>
+		<description lang="en"><![CDATA[This addon enables users to follow internal links within posted text having cookies disabled / non functional.]]></description>
 		<description lang="de"><![CDATA[Dieses AddOn befähigt Benutzer, die die Annahme von Cookies verweigert haben oder deren Browser keine Cookies unterstützen, internen Verlinkungen in Beiträgen zu folgen ohne automatisch ausgeloggt zu werden.]]></description>
-		<author-notes lang="en"><![CDATA[This addon can work as a stand alone mod.]]></author-notes>
-		<author-notes lang="de"><![CDATA[Dieses AddOn kann auch allein verwendet werden.]]></author-notes>
 		<author-group>
 			<author>
 				<realname><![CDATA[Miriam]]></realname>
@@ -26,10 +24,6 @@
 			<time>120</time>
 			<target-version>3.0.12</target-version>
 		</installation>
-		<link-group>
-			<link type="parent" href="./install_mod.xml" lang="en">Main Mod: Convert internal URL links into their titles</link>
-			<link type="parent" href="./install_mod.xml" lang="de">Haupt-Mod:Interne Links in Titel konvertieren</link>
-		</link-group>
 	</header>
 	<action-group>
 		<open src="includes/functions_content.php">

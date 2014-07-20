@@ -6,16 +6,10 @@
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Convert internal URL links into their titles]]></title>
-		<title lang="de"><![CDATA[Interne Links in Titel konvertieren]]></title>
+		<title lang="en"><![CDATA[Links in posts - convert internal URL links into their titles]]></title>
+		<title lang="de"><![CDATA[Verlinkungen in Beiträgen - Interne Links in Titel konvertieren]]></title>
 		<description lang="en"><![CDATA[With this mod you are able to automatically convert internal links of forums/categories, topics, posts into the given titles.]]></description>
 		<description lang="de"><![CDATA[Mit dieser Modifikation konvertiert das Forum interne Links innerhalb von Posts automatisch in den Titel des verlinkten Forums / der Kategorie / des Themas / des Beitrages.]]></description>
-		<author-notes lang="en"><![CDATA[This mod contains two more seperate mods, which
-- enable your board to entitle external links in posts
-- enable users having cookies disabled or non-functional to follow internal links within posts without being logged out.]]></author-notes>
-		<author-notes lang="de"><![CDATA[Diese Modifikation enthält zwei weitere optionale Modifikationen, welche
-- dein Board befähigen, externe Link Titel automatisch umzuwandeln
-- Benutzer, die Cookies ausgeschaltet oder nicht funktionierend haben, befähigen internen Links in beitrgen zu folgen, ohne ausgeloggt zu werden.]]></author-notes>
 		<author-group>
 			<author>
 				<realname><![CDATA[Miriam]]></realname>
@@ -31,17 +25,15 @@
 			<target-version>3.0.12</target-version>
 		</installation>
 		<link-group>
-			<link type="contrib" href="./contrib/AddOn - external links.xml" lang="en">AddOn - external links</link>
-			<link type="contrib" href="./contrib/AddOn - cookies disabled.xml" lang="en">AddOn - cookies disabled</link>
+			<link type="contrib" href="./contrib/external_links.xml" lang="en">AddOn - external links</link>
+			<link type="contrib" href="./contrib/cookies_disabled.xml" lang="en">AddOn - cookies disabled</link>
 		</link-group>
 	</header>
 	<action-group>
 		<open src="includes/functions_content.php">
 			<edit>
-				<find><![CDATA[			if (!$relative_url)
-			{
-				return $whitespace . $orig_url . '/' . $orig_relative; // slash is taken away by relative url pattern
-			}]]></find>
+				<find><![CDATA[			$relative_url	= preg_replace('/[&?]sid=[0-9a-f]{32}$/', '', preg_replace('/([&?])sid=[0-9a-f]{32}&/', '$1', $relative_url));
+			$url			= $url . '/' . $relative_url;]]></find>
 				<action type="after-add"><![CDATA[			// forum = f, topic = t, post = p
 			global $db;
 			$match = preg_match_all('/[\?&#]([ptf])={0,1}(\d+)/', $relative_url, $matches);
@@ -73,7 +65,7 @@
 				$result = $db->sql_query($sql);
 				if ($row = $db->sql_fetchrow($result))
 				{
-					$relative_url = html_entity_decode($row[$key]);
+					$relative_url = $row[$key];
 				}
 				$db->sql_freeresult($result);
 			}]]></action>
