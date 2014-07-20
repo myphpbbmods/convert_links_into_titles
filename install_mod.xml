@@ -71,7 +71,7 @@
 				$result = $db->sql_query($sql);
 				if ($row = $db->sql_fetchrow($result))
 				{
-					$relative_url = $row[$key];
+					$relative_url = html_entity_decode($row[$key]);
 				}
 				$db->sql_freeresult($result);
 			}]]></action>
