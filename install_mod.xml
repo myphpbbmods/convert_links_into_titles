@@ -38,8 +38,10 @@
 	<action-group>
 		<open src="includes/functions_content.php">
 			<edit>
-				<find><![CDATA[			$relative_url	= preg_replace('/[&?]sid=[0-9a-f]{32}$/', '', preg_replace('/([&?])sid=[0-9a-f]{32}&/', '$1', $relative_url));
-			$url			= $url . '/' . $relative_url;]]></find>
+				<find><![CDATA[			if (!$relative_url)
+			{
+				return $whitespace . $orig_url . '/' . $orig_relative; // slash is taken away by relative url pattern
+			}]]></find>
 				<action type="after-add"><![CDATA[			// forum = f, topic = t, post = p
 			global $db;
 			$match = preg_match_all('/[\?&#]([ptf])={0,1}(\d+)/', $relative_url, $matches);
